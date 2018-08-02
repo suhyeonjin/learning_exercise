@@ -8,7 +8,7 @@ from data import utils
 flags = tf.app.flags
 FLAGS = flags.FLAGS
 
-#name, dataset_path, learning_rate, batch_size, epoch, ckptfile
+#name, dataset_path, learning_rate, batch_size, epoch
 def run_model(name, learning_rate, batch_size, epoch):
     
     #make model
@@ -45,11 +45,6 @@ if __name__ == "__main__":
     #Setting global variable
     flags.DEFINE_string("dataset_path", "./data", "dataset directory")
     
-    #flags.DEFINE_string("name", "unnamed", "model name for ckpt file")
-    #flags.DEFINE_string("csvpath", "./bitcoin_ticker.csv", "model directory")
-    #flags.DEFINE_string("imgdir", "./x_data", "image directory")
-    #flags.DEFINE_boolean("gen_png", False, "generate new png files or not. extreamly lot of time consumed")
-
     #hyper parameter
     flags.DEFINE_integer("batch_size", 100, "batch_size")
     flags.DEFINE_integer("epoch",15,"total_epoches")
