@@ -3,10 +3,11 @@ import numpy as np
 
 class Model():
     def __init__(self, sess, name, FLAGS):
+        tf.set_random_seed(777)  # reproducibility
         self.sess = sess
         self.name = name
         self.FLAGS = FLAGS
-        
+                
         if FLAGS.model=='CNN' or FLAGS.model == 'cnn':
         	print("[*] init Model : ",self.FLAGS.learning_rate, type(self.FLAGS.learning_rate) )
         	self._build_CNN()
@@ -44,9 +45,9 @@ class Model():
 
             # Convolutional Layer #2 and Pooling Layer #2
             conv3 = tf.layers.conv2d(inputs=dropout2, filters=128, kernel_size=[3, 3],
-                                     padding="same", activation=tf.nn.relu)
+                                     padding="SAME", activation=tf.nn.relu)
             pool3 = tf.layers.max_pooling2d(inputs=conv3, pool_size=[2, 2],
-                                            padding="same", strides=2)
+                                            padding="SAME", strides=2)
             dropout3 = tf.layers.dropout(inputs=pool3,
                                          rate=0.3, training=self.training)
 
@@ -84,6 +85,3 @@ class Model():
     def train(self, x_data, y_data, training=True):
         return self.sess.run([self.cost, self.optimizer], feed_dict={
             self.X: x_data, self.Y: y_data, self.training: training})
-
-
-    #def runtime(self, )
