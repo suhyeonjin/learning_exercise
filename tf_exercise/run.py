@@ -43,13 +43,10 @@ def run_model(name, learning_rate, batch_size, epoch):
 
 if __name__ == "__main__":
     #Setting global variable
-<<<<<<< HEAD
     #flags.DEFINE_string("name", "unnamed", "model name for ckpt file")
 
-=======
     flags.DEFINE_string("dataset_path", "./data", "dataset directory")
     
->>>>>>> d08849c9be3c09e1b4e74e2c756eacab03639612
     #hyper parameter
     flags.DEFINE_integer("batch_size", 100, "batch_size")
     flags.DEFINE_integer("epoch",15,"total_epoches")
