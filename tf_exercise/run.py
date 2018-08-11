@@ -28,7 +28,7 @@ def run_model(name, learning_rate, batch_size, epoch):
     for ep in range(epoch):
         avg_cost = 0
         total_batches = int(x_data.shape[0]/batch_size)
-        print(int(x_data.shape[0]), total_batches, batch_size)
+        #print(int(x_data.shape[0]), total_batches, batch_size)
 
         for i in range(total_batches):
             x,y = x_data[i*batch_size:i*batch_size+batch_size], y_data[i*batch_size:i*batch_size+batch_size]
@@ -46,9 +46,6 @@ def run_model(name, learning_rate, batch_size, epoch):
 if __name__ == "__main__":
     #Setting global variable
     #flags.DEFINE_string("name", "unnamed", "model name for ckpt file")
-    #flags.DEFINE_string("csvpath", "./bitcoin_ticker.csv", "model directory")
-    #flags.DEFINE_string("imgdir", "./x_data", "image directory")
-    #flags.DEFINE_boolean("gen_png", False, "generate new png files or not. extreamly lot of time consumed")
 
     #hyper parameter
     flags.DEFINE_integer("batch_size", 100, "batch_size")
