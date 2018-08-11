@@ -1,6 +1,5 @@
 import tensorflow as tf
 import numpy as np
-import matplotlib.pyplot as plt
 import sys
 
 from model import models
@@ -9,16 +8,15 @@ from data import utils
 flags = tf.app.flags
 FLAGS = flags.FLAGS
 
-#name, dataset_path, learning_rate, batch_size, epoch, ckptfile
+#name, dataset_path, learning_rate, batch_size, epoch
 def run_model(name, learning_rate, batch_size, epoch):
-    tf.set_random_seed(777)  # reproducibility
-
+    
     #make model
     sess = tf.Session()
     md = models.Model(sess, name, FLAGS)
 
     #data preprocessing
-    dp = utils.preprocess()
+    dp = utils.preprocess(FLAGS)
     x_data, y_data, x_test, y_test = dp.Mnist2data()
     
     #initialize
@@ -45,13 +43,17 @@ def run_model(name, learning_rate, batch_size, epoch):
 
 if __name__ == "__main__":
     #Setting global variable
+<<<<<<< HEAD
     #flags.DEFINE_string("name", "unnamed", "model name for ckpt file")
 
+=======
+    flags.DEFINE_string("dataset_path", "./data", "dataset directory")
+    
+>>>>>>> d08849c9be3c09e1b4e74e2c756eacab03639612
     #hyper parameter
     flags.DEFINE_integer("batch_size", 100, "batch_size")
     flags.DEFINE_integer("epoch",15,"total_epoches")
     flags.DEFINE_float("learning_rate",0.001, "learning_rate")
-
 
     #define model
     flags.DEFINE_string("model",'cnn',"Select Model")
